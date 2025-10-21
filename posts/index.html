@@ -16,52 +16,12 @@
     </div>
   </header>
 
-  <main class="max-w-6xl mx-auto px-4 py-12">
+    <main class="max-w-6xl mx-auto px-4 py-12">
     <h1 class="text-3xl font-extrabold mb-6">Todos os Artigos</h1>
     <p class="text-gray-600 mb-8">Encontre aqui conteúdos sobre ansiedade, estresse e práticas para bem-estar emocional.</p>
 
-    <div class="grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-
-      <article class="bg-white rounded-xl shadow-sm overflow-hidden">
-        <a href="https://www.portalmultiplix.com/noticias/cotidiano/uso-excessivo-de-celular-pode-causar-insonia-dores-e-outros-problemas-de-saude" target="_blank" rel="noopener noreferrer" class="block">
-          <img src="/images/people.png" alt="Uso excessivo de celular" class="w-full h-48 object-cover">
-          <div class="p-4">
-            <h2 class="font-semibold text-lg">Uso excessivo de celular pode causar insônia, dores e outros problemas de saúde</h2>
-            <p class="text-sm text-gray-600 mt-2">Pesquisa aponta que o Brasil é um dos países que mais usa celular; uso excessivo pode impactar sono e saúde mental. (Portal Multiplix)</p>
-          </div>
-        </a>
-      </article>
-
-      <article class="bg-white rounded-xl shadow-sm overflow-hidden">
-        <a href="https://www.portalmultiplix.com/noticias/saude-bem-estar/ansioso-ja-neste-inicio-de-ano-aprenda-a-lidar-com-os-novos-planos-e-desafios-visando-o-bem-estar" target="_blank" rel="noopener noreferrer" class="block">
-          <img src="/images/mulher_preta_estresse2.jpeg" alt="Ansiedade" class="w-full h-48 object-cover">
-          <div class="p-4">
-            <h2 class="font-semibold text-lg">Ansioso já neste início de ano? Aprenda a lidar com os novos planos e desafios</h2>
-            <p class="text-sm text-gray-600 mt-2">Dicas de organização de expectativas, autocuidado e ajuda profissional para começar o ano com mais bem-estar. (Portal Multiplix)</p>
-          </div>
-        </a>
-      </article>
-
-      <article class="bg-white rounded-xl shadow-sm overflow-hidden">
-        <a href="/posts/estresse.html" class="block">
-          <img src="/images/estresse.jpeg" alt="Estresse" class="w-full h-48 object-cover">
-          <div class="p-4">
-            <h2 class="font-semibold text-lg">O impacto do estresse no dia a dia</h2>
-            <p class="text-sm text-gray-600 mt-2">Como a rotina e a sobrecarga desgastam mente e corpo — e como a terapia pode ajudar a regular respostas ao estresse.</p>
-          </div>
-        </a>
-      </article>
-
-      <article class="bg-white rounded-xl shadow-sm overflow-hidden">
-        <a href="/posts/ansiedade.html" class="block">
-          <img src="/images/ansiedade.jpeg" alt="Ansiedade" class="w-full h-48 object-cover">
-          <div class="p-4">
-            <h2 class="font-semibold text-lg">Ansiedade</h2>
-            <p class="text-sm text-gray-600 mt-2">Lidar com a ansiedade e reconstruir a relação com as emoções: terapia como espaço seguro para autoconhecimento.</p>
-          </div>
-        </a>
-      </article>
-
+    <div id="posts-grid" class="grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+      <!-- Grid será preenchido dinamicamente a partir de /posts/blog-posts.json -->
     </div>
 
     <div class="mt-12">
@@ -69,8 +29,64 @@
     </div>
   </main>
 
+  <script>
+    // Carrega os mesmos posts compartilhados pelo site
+    async function loadPostsGrid(jsonPath = '/posts/blog-posts.json') {
+      const grid = document.getElementById('posts-grid');
+      try {
+        const res = await fetch(jsonPath, { cache: 'no-cache' });
+        if (!res.ok) throw new Error('Falha ao carregar posts');
+        const posts = await res.json();
+
+        posts.forEach(post => {
+          const article = document.createElement('article');
+          article.className = 'bg-white rounded-xl shadow-sm overflow-hidden';
+
+          const a = document.createElement('a');
+          a.href = post.link || '#';
+          if (post.link && post.link.startsWith('http')) {
+            a.target = '_blank';
+            a.rel = 'noopener noreferrer';
+          }
+          a.className = 'block';
+
+          const img = document.createElement('img');
+          img.src = post.image;
+          img.alt = post.title;
+          img.className = 'w-full h-48 object-cover';
+
+          const div = document.createElement('div');
+          div.className = 'p-4';
+
+          const h2 = document.createElement('h2');
+          h2.className = 'font-semibold text-lg';
+          h2.textContent = post.title;
+
+          const p = document.createElement('p');
+          p.className = 'text-sm text-gray-600 mt-2';
+          p.textContent = post.excerpt;
+
+          div.appendChild(h2);
+          div.appendChild(p);
+          a.appendChild(img);
+          a.appendChild(div);
+          article.appendChild(a);
+          grid.appendChild(article);
+        });
+      } catch (err) {
+        console.error('Erro ao carregar posts:', err);
+        grid.innerHTML = '<p class="text-gray-500">Não foi possível carregar os artigos.</p>';
+      }
+    }
+
+    loadPostsGrid();
+  </script>
+
   <footer class="bg-white border-t mt-12">
     <div class="max-w-6xl mx-auto px-4 py-6 text-sm text-gray-500">© Mariana Faria</div>
   </footer>
+  <div class="max-w-6xl mx-auto px-4 text-xs text-gray-500 mt-4 mb-8">
+    Ícone Whatsapp por <a href="https://icons8.com/icon/16713/whatsapp" target="_blank" rel="noopener noreferrer" class="underline">Whatsapp</a> e ícone Instagram por <a href="https://icons8.com/icon/Xy10Jcu1L2Su/instagram" target="_blank" rel="noopener noreferrer" class="underline">Instagram</a>, via <a href="https://icons8.com" target="_blank" rel="noopener noreferrer" class="underline">Icons8</a>.
+  </div>
 </body>
 </html>

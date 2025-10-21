@@ -7,6 +7,11 @@
     <!-- SEO básico -->
     <meta name="description" content="Mariana Faria — psicóloga clínica (abordagem junguiana). Atendimento online para ansiedade, autoconhecimento e desenvolvimento pessoal. Agende sua sessão online.">
     <link rel="canonical" href="https://www.psicologamarianafaria.com/">
+    <!-- Favicon / App icons -->
+    <link rel="icon" href="/images/logo.png" type="image/png">
+    <link rel="shortcut icon" href="/images/logo.png">
+    <link rel="apple-touch-icon" href="/images/logo.png">
+    <meta name="theme-color" content="#ffffff">
 
     <!-- Open Graph (melhora o snippet quando compartilhado) -->
     <meta property="og:type" content="website">
@@ -144,6 +149,33 @@
         }
         .carousel-prev { left: 0.5rem; }
         .carousel-next { right: 0.5rem; }
+    </style>
+    <!-- Estilos para o botão Voltar ao Topo -->
+    <style>
+        .back-to-top {
+            position: fixed;
+            right: 1rem;
+            bottom: 1.25rem;
+            width: 48px;
+            height: 48px;
+            background: var(--color-primary-action);
+            color: white;
+            border-radius: 9999px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 20px rgba(37,99,235,0.25);
+            z-index: 60;
+            transform: translateY(8px);
+            opacity: 0;
+            transition: opacity 220ms ease, transform 220ms ease;
+        }
+        .back-to-top[aria-hidden="false"] { opacity: 1; transform: translateY(0); }
+        .back-to-top:focus { outline: 2px solid rgba(255,255,255,0.85); outline-offset: 3px; }
+        .back-to-top svg { width: 20px; height: 20px; }
+        @media (prefers-reduced-motion: reduce) {
+            .back-to-top { transition: none; }
+        }
     </style>
 </head>
 <body class="text-gray-800 antialiased">
@@ -513,10 +545,8 @@
 
                                 <!-- Botão que abre o WhatsApp com a mensagem preenchida -->
                                 <button id="whatsapp-send" type="button" class="w-full px-6 py-3 mt-2 bg-green-500 text-white font-bold rounded-lg hover:bg-green-600 transition duration-300 shadow-md flex items-center justify-center">
-                                    <!-- Ícone do WhatsApp (SVG) -->
-                                    <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M12.04 2C6.54 2 2.08 6.47 2.08 12c0 2.12.69 4.1 2.02 5.76l-1.3 4.74 5.01-1.27A9.97 9.97 0 0012.04 22c5.5 0 9.96-4.47 9.96-10S17.54 2 12.04 2zm0 18.2c-1.78 0-3.46-.48-4.9-1.39l-.35-.2-3.68.94.94-3.65-.22-.36a8.21 8.21 0 01-1.26-4.34c0-4.5 3.66-8.16 8.16-8.16s8.16 3.66 8.16 8.16-3.66 8.16-8.16 8.16zm4.52-6.55c-.25-.13-.74-.37-1.25-.61s-1.02-.25-1.42.06c-.39.31-.76.75-1.12 1.19-.36.44-.73.49-1.35.15-.62-.35-2.61-1.61-3.79-3.5-.94-1.52-1.13-2.14-.38-3.16.27-.37.56-.58.74-.78.18-.2.27-.36.42-.56.15-.2.07-.37-.02-.56s-1.02-2.5-1.4-3.48c-.37-1-.75-1.08-1.04-1.09-.28 0-.61.04-.95.04-.34 0-.89.13-1.34.61s-1.72 1.68-1.72 4.1c0 2.42 1.77 4.73 2.03 5.08.26.35 3.48 5.6 8.45 7.02 4.97 1.42 4.97 1.2 5.86 1.12.89-.08 2.76-.75 3.15-1.47.4-.73.4-1.35.28-1.56-.12-.21-.45-.33-.94-.57z"/>
-                                    </svg>
+                                    <!-- Ícone do WhatsApp (arquivo SVG local) -->
+                                    <img src="/images/icons8-whatsapp.svg" alt="WhatsApp" class="w-7 h-7 mr-2 inline-block" aria-hidden="true">
                                     Enviar Mensagem pelo WhatsApp
                                 </button>
                                 
@@ -567,21 +597,19 @@
                     <h4 class="font-bold text-lg mb-4 text-blue-400">Mídias Sociais</h4>
                     <div class="flex space-x-4 items-center">
                         <a href="https://www.instagram.com/marianafaria.psi/" aria-label="Instagram" class="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-gray-700 text-pink-400 hover:text-pink-300 transition duration-200" target="_blank" rel="noopener noreferrer" style="overflow:visible;">
-                            <svg class="w-6 h-6 block" viewBox="0 0 24 24" fill="currentColor" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M12 2c2.715 0 3.056.01 4.123.06 1.065.05 1.79.245 2.454.513.682.28 1.258.647 1.879 1.268.62.622.986 1.198 1.266 1.88.278.664.463 1.389.513 2.453.05 1.068.06 1.409.06 4.123s-.01 3.056-.06 4.123c-.05 1.065-.245 1.79-.513 2.454-.28.682-.647 1.258-1.268 1.879-.622.62-.998.986-1.88 1.266-.664.278-1.389.463-2.453.513-1.068.05-1.409.06-4.123.06s-3.056-.01-4.123-.06c-1.065-.05-1.79-.245-2.454-.513-.682-.28-1.258-.647-1.879-1.268-.62-.622-.986-.998-1.266-1.88-.278-.664-.463-1.389-.513-2.453-.05-1.068-.06-1.409-.06-4.123s.01-3.056.06-4.123c.05-1.065.245-1.79.513-2.454.28-.682.647-1.258 1.268-1.879.622-.62.998-.986 1.88-1.266.664-.278 1.389-.463 2.453-.513 1.068-.05 1.409-.06 4.123-.06zm0 1.9c-2.67 0-3.033.01-4.085.05c-1.025.044-1.57.234-1.928.375-.36.143-.68.344-.99.654-.31.31-.51.63-.654.99-.141.36-.331.903-.375 1.928-.04 1.052-.05 1.415-.05 4.085s.01 3.033.05 4.085c.044 1.025.234 1.57.375 1.928.143.36.344.68.654.99.31.31.63.51.99.654.36.141.903.331 1.928.375 1.052.04 1.415.05 4.085.05s3.033-.01 4.085-.05c1.025-.044 1.57-.234 1.928-.375.36-.143.68-.344.99-.654.31-.31.63-.51.99-.654.36-.141.903-.331 1.928-.375 1.052-.04 1.415-.05 4.085-.05zm0 2.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zm0 2a3.5 3.5 0 110 7 3.5 3.5 0 010-7zm4.25-1.25a1.25 1.25 0 100 2.5 1.25 1.25 0 000-2.5z"></path>
-                            </svg>
+                            <img src="/images/icons8-instagram-48.png" alt="Instagram" class="w-9 h-9 block" aria-hidden="true">
                         </a>
-                        <a href="https://wa.me/5511992179781?text=Ol%C3%A1%20Mariana,%20gostaria%20de%20agendar%20uma%20consulta." aria-label="WhatsApp" class="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-gray-700 text-green-300 hover:text-green-200 transition duration-200" target="_blank" rel="noopener noreferrer" style="overflow:visible;">
-                            <svg class="w-7 h-7 block" viewBox="0 0 32 32" fill="currentColor" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                                <path d="M16 3C9.37 3 4 8.37 4 15c0 2.66.88 5.12 2.37 7.18L6 26l3.05-.8A12.95 12.95 0 0016 27c6.63 0 12-5.37 12-12S22.63 3 16 3z"/>
-                                <path d="M19.11 17.22c-.33-.16-1.95-.96-2.25-1.07-.3-.11-.52-.16-.74.16s-.85 1.07-1.04 1.29c-.19.22-.38.25-.71.09-.33-.16-1.4-.52-2.66-1.64-.98-.87-1.64-1.94-1.84-2.27-.19-.33-.02-.51.14-.67.14-.14.33-.36.5-.54.17-.18.22-.3.33-.5.11-.2.06-.37-.03-.54-.09-.16-.74-1.78-1.02-2.44-.27-.65-.55-.56-.76-.57-.2-.01-.43-.01-.66-.01-.24 0-.6.09-.92.43-.32.34-1.22 1.19-1.22 2.89 0 1.69.99 3.33 1.13 3.56.14.23 1.94 3.16 4.8 4.86 2.86 1.7 3.1 1.43 3.66 1.37.56-.06 1.74-.71 2-1.4.26-.69.26-1.28.18-1.41-.07-.12-.25-.19-.52-.34z"/>
-                            </svg>
+                        <a href="https://wa.me/5511992179781?text=Ol%C3%A1%20Mariana,%20achei%20seu%20site%20e%20gostaria%20de%20agendar%20uma%20consulta." aria-label="WhatsApp" class="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-gray-700 text-green-300 hover:text-green-200 transition duration-200" target="_blank" rel="noopener noreferrer" style="overflow:visible;">
+                            <img src="/images/icons8-whatsapp.svg" alt="WhatsApp" class="w-7 h-7 block" aria-hidden="true">
                         </a>
                     </div>
                 </div>
             </div>
         </div>
     </footer>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-xs text-gray-400 mt-4 mb-8">
+        Ícone WhatsApp por <a href="https://icons8.com/icon/16713/whatsapp" target="_blank" rel="noopener noreferrer" class="underline">Whatsapp</a> e ícone Instagram por <a href="https://icons8.com/icon/Xy10Jcu1L2Su/instagram" target="_blank" rel="noopener noreferrer" class="underline">Instagram</a>, via <a href="https://icons8.com" target="_blank" rel="noopener noreferrer" class="underline">Icons8</a>.
+    </div>
 
     <script>
         // JavaScript para o menu mobile responsivo
@@ -618,11 +646,11 @@
         document.getElementById('whatsapp-send').addEventListener('click', function () {
             const name = document.getElementById('contact-name').value.trim();
             const message = document.getElementById('contact-message').value.trim();
-            const defaultMsg = 'Olá Mariana, gostaria de agendar uma consulta.'; // mensagem padrão
+            const defaultMsg = 'Olá Mariana, encontrei o seu site e gostaria de agendar uma consulta.'; // mensagem padrão
             const phone = '5511992179781'; // ajuste se necessário (formato internacional sem +)
 
             // Se message estiver vazio, usa defaultMsg; inclui nome se fornecido
-            const finalMessage = `${name ? 'Nome: ' + name + '\n\n' : ''}${message || defaultMsg}`;
+            const finalMessage = `${name ? 'Olá, o meu nome é ' + name + '\n\n' : ''}${message || defaultMsg}`;
 
             const url = `https://wa.me/${phone}?text=${encodeURIComponent(finalMessage)}`;
             window.open(url, '_blank');
@@ -764,38 +792,7 @@
             });
         })();
         
-        // === Blog: dados e renderização dinâmica (inserido no container #blog-posts-container) ===
-        const blogPosts = [
-            {
-                title: 'Uso excessivo de celular pode causar insônia, dores e outros problemas de saúde',
-                date: '2022-03-14',
-                excerpt: 'Pesquisa mostra que o Brasil está entre os países que mais usam celular; o uso excessivo pode provocar insônia, dores de cabeça e impacto na saúde mental. Dicas práticas: estabelecer limites, fazer pausas e reduzir o uso antes de dormir. (Fonte: Portal Multiplix)',
-                image: 'images/people.png',
-                link: 'https://www.portalmultiplix.com/noticias/cotidiano/uso-excessivo-de-celular-pode-causar-insonia-dores-e-outros-problemas-de-saude'
-            },
-            {
-                title: 'Ansioso já neste início de ano? Aprenda a lidar com planos e desafios visando o bem-estar',
-                date: '2024-01-11',
-                excerpt: 'Com o novo ano, aumentam expectativas e preocupações. A psicóloga Mariana Faria sugere ajustar expectativas, organizar planos realistas, praticar autocuidado e buscar ajuda quando necessário para preservar a saúde mental. (Fonte: Portal Multiplix)',
-                image: 'images/mulher_preta_estresse2.jpeg',
-                link: 'https://www.portalmultiplix.com/noticias/saude-bem-estar/ansioso-ja-neste-inicio-de-ano-aprenda-a-lidar-com-os-novos-planos-e-desafios-visando-o-bem-estar'
-            },
-            {
-                title: 'O impacto do estresse no dia a dia',
-                date: '2025-07-15',
-                excerpt: 'A correria da rotina, a pressão constante e a sobrecarga de responsabilidades podem desgastar tanto a mente quanto o corpo. A terapia oferece um espaço para compreender esses processos e encontrar caminhos mais saudáveis de lidar com as dificuldades.',
-                image: 'images/estresse.jpeg',
-                link: '/posts/estresse.html'
-            },
-            {
-                title: 'Ansiedade',
-                date: '2025-10-03',
-                excerpt: 'Lidar com a ansiedade é reorganizar emoções e pensamentos para recuperar equilíbrio. A terapia é um espaço seguro para reconstruir essa relação consigo mesma e promover autoconhecimento.',
-                image: 'images/ansiedade.jpeg',
-                link: '/posts/ansiedade.html'
-            }
-        ];
-
+        // === Blog: carregar posts de um arquivo JSON centralizado e renderizar ===
         function formatDateISO(iso) {
             try {
                 const d = new Date(iso);
@@ -805,60 +802,106 @@
             }
         }
 
-        function renderBlogSection() {
+        async function loadAndRenderBlogPosts(jsonPath = '/posts/blog-posts.json') {
             const container = document.getElementById('blog-posts-container');
             if (!container) return;
             container.innerHTML = '';
 
-            blogPosts.forEach(post => {
-                const a = document.createElement('a');
-                a.href = post.link || '#';
-                a.className = 'block bg-white rounded-lg shadow-sm hover:shadow-md overflow-hidden transition';
-                a.setAttribute('aria-label', post.title);
+            try {
+                const res = await fetch(jsonPath, { cache: 'no-cache' });
+                if (!res.ok) throw new Error('Falha ao carregar posts');
+                const posts = await res.json();
 
-                const img = document.createElement('img');
-                img.src = post.image;
-                img.alt = post.title;
-                img.className = 'w-full h-40 object-cover';
+                // ordenar por data (mais recente primeiro) e pegar somente os 4 primeiros
+                const postsData = Array.isArray(posts) ? posts.slice().sort((a, b) => {
+                    const da = new Date(a.date || 0).getTime() || 0;
+                    const db = new Date(b.date || 0).getTime() || 0;
+                    return db - da;
+                }) : [];
+                const postsToShow = postsData.slice(0, 4);
 
-                const body = document.createElement('div');
-                body.className = 'p-4';
+                postsToShow.forEach(post => {
+                    const a = document.createElement('a');
+                    a.href = post.link || '#';
+                    a.className = 'block bg-white rounded-lg shadow-sm hover:shadow-md overflow-hidden transition';
+                    a.setAttribute('aria-label', post.title);
 
-                const h3 = document.createElement('h3');
-                h3.className = 'font-semibold text-gray-800 mb-2';
-                h3.textContent = post.title;
+                    const img = document.createElement('img');
+                    img.src = post.image;
+                    img.alt = post.title;
+                    img.className = 'w-full h-40 object-cover';
 
-                const p = document.createElement('p');
-                p.className = 'text-sm text-gray-600 mb-3';
-                p.textContent = post.excerpt;
+                    const body = document.createElement('div');
+                    body.className = 'p-4';
 
-                const meta = document.createElement('div');
-                meta.className = 'flex items-center justify-between text-xs text-gray-500';
+                    const h3 = document.createElement('h3');
+                    h3.className = 'font-semibold text-gray-800 mb-2';
+                    h3.textContent = post.title;
 
-                const time = document.createElement('time');
-                time.dateTime = post.date;
-                time.textContent = formatDateISO(post.date);
+                    const p = document.createElement('p');
+                    p.className = 'text-sm text-gray-600 mb-3';
+                    p.textContent = post.excerpt;
 
-                const readMore = document.createElement('span');
-                readMore.className = 'text-blue-500 font-medium';
-                readMore.textContent = 'Leia mais →';
+                    const meta = document.createElement('div');
+                    meta.className = 'flex items-center justify-between text-xs text-gray-500';
 
-                meta.appendChild(time);
-                meta.appendChild(readMore);
+                    const time = document.createElement('time');
+                    time.dateTime = post.date;
+                    time.textContent = formatDateISO(post.date);
 
-                body.appendChild(h3);
-                body.appendChild(p);
-                body.appendChild(meta);
+                    const readMore = document.createElement('span');
+                    readMore.className = 'text-blue-500 font-medium';
+                    readMore.textContent = 'Leia mais →';
 
-                a.appendChild(img);
-                a.appendChild(body);
+                    meta.appendChild(time);
+                    meta.appendChild(readMore);
 
-                container.appendChild(a);
-            });
+                    body.appendChild(h3);
+                    body.appendChild(p);
+                    body.appendChild(meta);
+
+                    a.appendChild(img);
+                    a.appendChild(body);
+
+                    container.appendChild(a);
+                });
+            } catch (err) {
+                console.error('Erro carregando posts:', err);
+                container.innerHTML = '<p class="text-center text-gray-500">Não foi possível carregar os artigos no momento.</p>';
+            }
         }
 
-        // Renderiza os posts (script está no final da página, podemos chamar diretamente)
-        renderBlogSection();
+        // Carrega e renderiza os posts do arquivo JSON centralizado
+        loadAndRenderBlogPosts();
+    </script>
+    <!-- Botão Voltar ao Topo -->
+    <button id="backToTop" class="back-to-top" aria-hidden="true" aria-label="Voltar ao topo" title="Voltar para o topo">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+            <path d="M12 19V6"></path>
+            <path d="M5 12l7-7 7 7"></path>
+        </svg>
+    </button>
+
+    <script>
+        (function() {
+            const btn = document.getElementById('backToTop');
+            if (!btn) return;
+
+            function show() { btn.setAttribute('aria-hidden', 'false'); }
+            function hide() { btn.setAttribute('aria-hidden', 'true'); }
+
+            // Mostrar depois de um pequeno scroll
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 300) show(); else hide();
+            }, { passive: true });
+
+            // Smooth scroll to top (respeita prefer-reduced-motion)
+            btn.addEventListener('click', () => {
+                const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+                if (reduce) { window.scrollTo(0,0); return; }
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        })();
     </script>
 </body>
 </html>
