@@ -39,7 +39,7 @@ body {
 /* Efeito de Logo/Mandala no Fundo */
 .mandala-texture {
     /* ATENÇÃO: SUBSTITUA A URL ABAIXO PELA URL DIRETA DA IMAGEM DA LOGO/MANDALA */
-    background-image: url('images/logo.png'); 
+    background-image: url('/images/logo.png'); 
     background-repeat: repeat;
     background-size: 300px;
     opacity: 0.1; /* Super sutil */
